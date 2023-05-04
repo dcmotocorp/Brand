@@ -29,9 +29,9 @@ def disable_nightly_rebase():
 
 def main():
     args = parse_args()
-    if is_master_branch():
-        print('Cannot enable/disable nightly rebase on the master branch')
-        return
+    # if is_master_branch():
+    #     print('Cannot enable/disable nightly rebase on the master branch')
+    #     return
     if args.enable and not args.disable:
         enable_nightly_rebase()
     elif args.disable and not args.enable:
