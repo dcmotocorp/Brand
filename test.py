@@ -34,35 +34,6 @@ from googleapiclient.errors import HttpError
 #thsdoifj 
 
 
-
-"""
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """
-
-
-
-
-
-
-
-
-
-
-
 api_key = 'AIzaSyBYkInQobwWohKd8VGkhUvOCO3Fvu2GfJQ'
 youtube = build('youtube', 'v3', developerKey=api_key)
 
