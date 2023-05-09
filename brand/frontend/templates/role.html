@@ -4,8 +4,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="{% static 'frontend_css/role_model/global.css' %}" />
-    <link rel="stylesheet" href="{% static 'frontend_css/role_model/index.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'frontend_css/role_model/global.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'frontend_css/role_model/index.css' %}"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Gugi:wght@400&display=swap"
@@ -129,78 +135,106 @@
       </div>
       <div class="log-in-part-parent">
         <div class="log-in-part">
-          <div class="container">
-            <div class="text5">
-              <div class="content-text">
-                <b class="choose-your-role">Choose Your Role</b>
+          <form  action = "{% url 'get-role' %}" method = "POST" >
+            {% csrf_token %}
+            <div class="container">
+              <div class="text5">
+                <div class="content-text">
+                  <b class="choose-your-role">Choose Your Role</b>
+                </div>
+                <div class="let-us-build">
+                  Let us build your experience with us!
+                </div>
               </div>
-              <div class="let-us-build">
-                Let us build your experience with us!
-              </div>
-            </div>
-            <div class="input">
-              <img
-                class="placeholder-icon10"
-                alt=""
-                src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
-              />
-
-              <div class="text6">Are you a Founder?</div>
-              {% comment %} <img
-                class="placeholder-icon10"
-                alt=""
-                src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
-              /> {% endcomment %}
-              <input type="radio" class="placeholder-icon10" id="html" name="fav_language" value="HTML">
-            </div>
-            <div class="input">
-              <img
-                class="placeholder-icon10"
-                alt=""
-                src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
-              />
-
-              <div class="text6">Are you an Investor?</div>
-              {% comment %} <img
-                class="placeholder-icon10"
-                alt=""
-                src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
-              /> {% endcomment %}
-              <input type="radio" class="placeholder-icon10" id="html" name="fav_language" value="HTML">
-            </div>
-            
-            <div class="input">
-              <img
-                class="placeholder-icon10"
-                alt=""
-                src="{% static 'frontend_css/role_model/public/placeholder6.svg' %}"
-              />
-
-              <div class="text6">Are you an Audience?</div>
-              {% comment %} <img
-                class="placeholder-icon10"
-                alt=""
-                src="{% static 'frontend_css/role_model/public/placeholder6.svg' %}"
-              /> {% endcomment %}
-              <input type="radio" class="0placeholder-icon10" id="html" name="fav_language" value="HTML">
-            </div>
-            <div class="cta-section">
-              <div class="button6">
+              <div class="input">
                 <img
-                  class="placeholder-icon"
+                  class="placeholder-icon10"
                   alt=""
-                  src="{% static 'frontend_css/role_model/public/placeholder7.svg' %}"
+                  src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
                 />
 
-                <div class="text">Continue</div>
+                <div class="text6">Are you a startups?</div>
+                {% comment %}
                 <img
-                  class="placeholder-icon"
+                  class="placeholder-icon10"
                   alt=""
-                  src="{% static 'frontend_css/role_model/public/placeholder7.svg' %}"
+                  src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
+                />
+                {% endcomment %}
+                <input
+                  type="radio"
+                  class="placeholder-icon10"
+                  id="html"
+                  name="role"
+                  value="startup"
                 />
               </div>
+              <div class="input">
+                <img
+                  class="placeholder-icon10"
+                  alt=""
+                  src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
+                />
+
+                <div class="text6">Are you an Investor?</div>
+                {% comment %}
+                <img
+                  class="placeholder-icon10"
+                  alt=""
+                  src="{% static 'frontend_css/role_model/public/placeholder5.svg' %}"
+                />
+                {% endcomment %}
+                <input
+                  type="radio"
+                  class="placeholder-icon10"
+                  id="html"
+                  name="role"
+                  value="investor"
+                />
+              </div>
+
+              <div class="input">
+                <img
+                  class="placeholder-icon10"
+                  alt=""
+                  src="{% static 'frontend_css/role_model/public/placeholder6.svg' %}"
+                />
+
+                <div class="text6">Are you an Audience?</div>
+                {% comment %}
+                <img
+                  class="placeholder-icon10"
+                  alt=""
+                  src="{% static 'frontend_css/role_model/public/placeholder6.svg' %}"
+                />
+                {% endcomment %}
+                <input
+                  type="radio"
+                  class="placeholder-icon10"
+                  id="html"
+                  name="role"
+                  value="audience"
+                />
+              </div>
+              <div class="cta-section">
+                <div class="button6">
+                  {% comment %} <img
+                    class="placeholder-icon"
+                    alt=""
+                    src="{% static 'frontend_css/role_model/public/placeholder7.svg' %}"
+                  /> {% endcomment %}
+
+                  
+                  <div ><input type="submit" class="button6" value="Continue" style ="border: none;color: white;"></div>
+                  {% comment %} <img
+                    class="placeholder-icon"
+                    alt=""
+                    src="{% static 'frontend_css/role_model/public/placeholder7.svg' %}"
+                  /> {% endcomment %}
+                </div>
+              </div>
             </div>
-          </div>
+          </form>
           <div class="by-using-our-container">
             <p class="by-using-our">By using our services you are agreeing</p>
             <p class="by-using-our">
@@ -212,7 +246,11 @@
           </div>
         </div>
         <div class="banner">
-          <img class="banner-child" alt="" src="{% static 'frontend_css/role_model/public/rectangle-3@2x.png' %}" />
+          <img
+            class="banner-child"
+            alt=""
+            src="{% static 'frontend_css/role_model/public/rectangle-3@2x.png' %}"
+          />
         </div>
       </div>
     </div>

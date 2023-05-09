@@ -150,69 +150,67 @@
               <div class="or-sign-in">Sign In with Apple</div>
               <div class="divider-child"></div>
             </div>
-            <div class="input-form">
-              <div class="input-field">
-                <div class="label">Username</div>
-                <div class="segmented-picker">
-                  <div class="text-input2">
-                    <div class="text5">Insert your username</div>
+            <form  action = "{% url 'login-user' %}" method = "POST" >
+              {% csrf_token %}
+              <div class="input-form">
+                <div class="input-field">
+                  <div class="label">Username</div>
+                  <div class="segmented-picker">
+                    <div class="text-input2">
+                      {% comment %} <div class="text5">Insert your username</div> {% endcomment %}
+                      <input
+                        type="text"
+                        class="segmented-picker text5 text-input2"
+                        style="color: white; font-size: 16px ;" 
+                        name="username"
+                        placeholder="Insert your username"
+                      />
+                    </div>
+                    
                   </div>
-                  <img
-                    class="information-icon"
-                    alt=""
-                    src="{% static 'frontend_css/login/public/information.svg' %}"
-                  />
+                  <div class="hint-text">Hint text</div>
                 </div>
-                <div class="hint-text">Hint text</div>
-              </div>
-              <div class="input-field">
-                <div class="label">Password</div>
-                <div class="segmented-picker">
-                  <div class="text-input2">
-                    <div class="text5">Insert your password</div>
+                <div class="input-field">
+                  <div class="label">Password</div>
+                  <div class="segmented-picker">
+                    <div class="text-input2">
+                      <input
+                        type="text"
+                        class="segmented-picker text5 text-input2"
+                        style="color: white; font-size: 16px ;" 
+                        name="password"
+                        placeholder="Insert your password"
+                      />
+                    </div>
+                    
+
+                    <img class="fieye-icon" alt="" src="{% static 'frontend_css/login/public/fieye.svg' %}" />
                   </div>
-                  <img
-                    class="information-icon"
-                    alt=""
-                    src="{% static 'frontend_css/login/public/information.svg' %}"
-                  />
-
-                  <img class="fieye-icon" alt="" src="{% static 'frontend_css/login/public/fieye.svg' %}" />
+                  <div class="hint-text">Hint text</div>
                 </div>
-                <div class="hint-text">Hint text</div>
-              </div>
-              <div class="horizontal-container1">
-                <div class="button1">
-                  <img
-                    class="placeholder-icon"
-                    alt=""
-                    src="{% static 'frontend_css/login/public/placeholder5.svg' %}"
-                  />
+                <div class="horizontal-container1">
+                  <div class="button1">
+                    <img
+                      class="placeholder-icon"
+                      alt=""
+                      src="{% static 'frontend_css/login/public/placeholder5.svg' %}"
+                    />
 
-                  <div class="text">Forgot username/password?</div>
-                  <img
-                    class="placeholder-icon"
-                    alt=""
-                    src="{% static 'frontend_css/login/public/placeholder6.svg' %}"
-                  />
+                    <div class="text">Forgot username/password?</div>
+                    <img
+                      class="placeholder-icon"
+                      alt=""
+                      src="{% static 'frontend_css/login/public/placeholder6.svg' %}"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="text-input-container">
-              <div class="button7">
-                <img
-                  class="placeholder-icon"
-                  alt=""
-                  src="{% static 'frontend_css/login/public/placeholder7.svg' %}"
-                />
-
-                <div class="text">Log In</div>
-                <img
-                  class="placeholder-icon"
-                  alt=""
-                  src="{% static 'frontend_css/login/public/placeholder8.svg' %}"
-                />
-              </div>
+              <div class="text-input-container">
+                <div class="button7">
+                  <div class="text"></div>
+                  <input type="submit" class="button7" style ="border: none;color: white;" value="Log In" >               
+                </div>
+              </form>
               <div class="text-input4">
                 <div class="dont-have-an">Don’t have an account?</div>
                 <div class="button8">

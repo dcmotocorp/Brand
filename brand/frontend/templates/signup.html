@@ -1,11 +1,17 @@
-{% load  static  %}
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="{% static 'frontend_css/signup/global.css' %}" />
-    <link rel="stylesheet" href="{% static 'frontend_css/signup/index.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'frontend_css/signup/global.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'frontend_css/signup/index.css' %}"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
@@ -19,123 +25,130 @@
     <div class="sign-up-dark">
       <div class="log-in-part">
         <div class="frame-parent">
-          <div class="input-form-parent">
-            <div class="input-form">
-              <div class="input-field">
-                <div class="label">Full Name</div>
-                <button class="segmented-picker">
-                  <div class="text-input"></div>
-                  <div class="text">First Name</div>
-                  <img
-                    class="information-icon"
-                    alt=""
-                    src="{% static 'frontend_css/signup/public/information.svg' %}"
-                  />
-                </button>
-                <div class="segmented-picker1">
-                  <div class="text-input1">
-                    <div class="text1">Last Name</div>
+          <form  action = "{% url 'submit-user' %}" method = "POST" >
+            {% csrf_token %}
+            <div class="input-form-parent">
+              <div class="input-form">
+                <div class="input-field">
+                  <div class="label">Full Name</div>
+                  <div>
+                    <input
+                      type="text"
+                      class="segmented-picker"
+                      style="color: white; font-size: 16px"
+                      name="firstname"
+                      placeholder="First Name"
+                    />
                   </div>
-                  <img
-                    class="information-icon1"
-                    alt=""
-                    src="{% static 'frontend_css/signup/public/information.svg' %}"
-                  />
+                  <div class="segmented-picker1">
+                    <div>
+                      <input
+                        type="text"
+                        style="color:white;font-size:16px box-sizing: border-box; width: 200px;height: 39px;background-color : #2c3444; border:1px ;"
+                        name="lastname"
+                        placeholder="Last Name"
+                      />
+                    </div>
+                  </div>
+                  <div class="hint-text">Hint text</div>
                 </div>
-                <div class="hint-text">Hint text</div>
-              </div>
-              <div class="input-field1">
-                <div class="label1">Email Address</div>
-                <div class="segmented-picker2">
-                  <div class="text-input1">
-                    <div class="text1">Insert your email</div>
+                <div class="input-field1">
+                  <div class="label1">Email Address</div>
+                  <div class="segmented-picker2">
+                    <div>
+                      <input
+                        type="text"
+                        class="segmented-picker2"
+                        style="color: white; font-size: 16px"
+                        name="email"
+                        placeholder="Insert your email"
+                      />
+                    </div>
                   </div>
-                  <img
-                    class="information-icon1"
-                    alt=""
-                    src="{% static 'frontend_css/signup/public/information.svg' %}"
-                  />
+                  <div class="hint-text1">Hint text</div>
                 </div>
-                <div class="hint-text1">Hint text</div>
-              </div>
-              <div class="input-field1">
-                <div class="label1">Username</div>
-                <div class="segmented-picker2">
-                  <div class="text-input1">
-                    <div class="text1">Insert your username</div>
+                <div class="input-field1">
+                  <div class="label1">Username</div>
+                  <div class="segmented-picker2">
+                    <div>
+                      <input
+                        type="text"
+                        class="segmented-picker2"
+                        style="color: white; font-size: 16px"
+                        name="username"
+                        placeholder="Insert your username"
+                      />
+                    </div>
                   </div>
-                  <img
-                    class="information-icon1"
-                    alt=""
-                    src="{% static 'frontend_css/signup/public/information.svg' %}"
-                  />
+                  <div class="hint-text1">Hint text</div>
                 </div>
-                <div class="hint-text1">Hint text</div>
-              </div>
-              <div class="input-field1">
-                <div class="label1">Password</div>
-                <div class="segmented-picker2">
-                  <div class="text-input1">
-                    <div class="text1">Insert your password</div>
-                  </div>
-                  <img
-                    class="information-icon1"
-                    alt=""
-                    src="{% static 'frontend_css/signup/public/information.svg' %}"
-                  />
+                <div class="input-field1">
+                  <div class="label1">Password</div>
+                  <div class="segmented-picker2">
+                    <div>
+                      <input
+                        type="text"
+                        class="segmented-picker2"
+                        style="color: white; font-size: 16px"
+                        name="password"
+                        placeholder="Insert your password"
+                      />
+                    </div>
 
-                  <img class="fieye-icon" alt="" src="{% static 'frontend_css/signup/public/fieye.svg' %}" />
-                </div>
-                <div class="hint-text1">Hint text</div>
-              </div>
-              <div class="horizontal-container">
-                <div class="checkbox">
-                  <div class="slider">
-                    <div class="checkbox-base"></div>
+                    <img
+                      class="fieye-icon"
+                      alt=""
+                      src="{% static 'frontend_css/signup/public/fieye.svg' %}"
+                    />
                   </div>
-                  <div class="paragraph-container">
-                    <div class="some-heading-text">Keep me logged in</div>
-                    <div class="supporting-text-goes">
-                      Supporting text goes here
+                  <div class="hint-text1">Hint text</div>
+                </div>
+                <div class="horizontal-container">
+                  <div class="checkbox">
+                    <div class="slider">
+                      <div class="checkbox-base"></div>
+                    </div>
+                    <div class="paragraph-container">
+                      <div class="some-heading-text">Keep me logged in</div>
+                      <div class="supporting-text-goes">
+                        Supporting text goes here
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="text-input-container">
+                {% comment %} <div class="button">
+                  <img
+                    class="placeholder-icon"
+                    alt=""
+                    src="{% static 'frontend_css/signup/public/placeholder.svg' %}"
+                  /> {% endcomment %}
+
+                  {% comment %} <div class="button-text">Sign Up</div> {% endcomment %}
+                  <input type="submit" class="button" style ="border: none;color: white;" value="Sign Up" >
+                
+              </div>
             </div>
-            <div class="text-input-container">
-              <div class="button">
+          </form>
+            <div class="text-input5">
+              <div class="already-have-an">Already have an Account</div>
+              <div class="button1">
                 <img
                   class="placeholder-icon"
                   alt=""
-                  src="{% static 'frontend_css/signup/public/placeholder.svg' %}"
+                  src="{% static 'frontend_css/signup/public/placeholder1.svg' %}"
                 />
 
-                <div class="button-text">Sign Up</div>
+                <div class="button-text">Login</div>
                 <img
                   class="placeholder-icon"
                   alt=""
-                  src="{% static 'frontend_css/signup/public/placeholder.svg' %}"
+                  src="{% static 'frontend_css/signup/public/placeholder1.svg' %}"
                 />
               </div>
             </div>
-          </div>
-          <div class="text-input5">
-            <div class="already-have-an">Already have an Account</div>
-            <div class="button1">
-              <img
-                class="placeholder-icon"
-                alt=""
-                src="{% static 'frontend_css/signup/public/placeholder1.svg' %}"
-              />
-
-              <div class="button-text">Login</div>
-              <img
-                class="placeholder-icon"
-                alt=""
-                src="{% static 'frontend_css/signup/public/placeholder1.svg' %}"
-              />
-            </div>
-          </div>
+          
         </div>
         <div class="frame-group">
           <div class="mobile-social-buttons-parent">
@@ -168,7 +181,11 @@
         </div>
       </div>
       <div class="banner">
-        <img class="banner-child" alt="" src="{% static 'frontend_css/signup/public/rectangle-3@2x.png' %}" />
+        <img
+          class="banner-child"
+          alt=""
+          src="{% static 'frontend_css/signup/public/rectangle-3@2x.png' %}"
+        />
       </div>
       <div class="page-header">
         <div class="horizontal-container1">
