@@ -35,9 +35,10 @@ def submit_user(request):
 def validate_user(request):
 
     data = {}
-    print(request.POST)
+    
     data['password'] = request.POST.get('password')
     data['username'] = request.POST.get('username')
     url =  "http://127.0.0.1:8000/auths/login/"
+    print(data)
     resposne = requests.post(url,data= data)
     return HttpResponse(resposne)

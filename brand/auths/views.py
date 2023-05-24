@@ -25,10 +25,17 @@ class UserRegistrationView(APIView):
 
 class UserLoginView(APIView):
     def post(self, request):
+        print("===================w")
         serializer = UserLoginSerializer(data=request.data)
+        print("===================w")
         if serializer.is_valid():
+            print("===================w")
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
+            print("===================================================")
+            print(username)
+            print(password)
+
             if '@' in username:
                 user1 = User.objects.filter(email=username).first()
                 user = authenticate(request, username=user1.username, password=password)
