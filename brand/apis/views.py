@@ -6,6 +6,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly
+from rest_framework.authentication import BasicAuthentication
+from utils.permissions import IsSuperAdminOrReadOnly
 # Create your views here.
 
 # =============== START UPS =========================
@@ -22,7 +24,10 @@ from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticat
 class Startups(ModelViewSet):
     queryset = Startups.objects.all()
     serializer_class = StartupSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsSuperAdminOrReadOnly]
+
+
 
 
  

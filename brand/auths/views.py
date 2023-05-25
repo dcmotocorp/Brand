@@ -5,10 +5,7 @@ from rest_framework.views import APIView
 from .serializers import UserRegistrationSerializer, UserLoginSerializer
 from django.contrib.auth import authenticate, login
 from .models import User
-
-
-
-
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from django.contrib.auth.views import PasswordResetView
 from django.urls import reverse_lazy
 from rest_framework import status
@@ -24,6 +21,7 @@ class UserRegistrationView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserLoginView(APIView):
+    authentication_classes = [BasicAuthentication]
     def post(self, request):
         print("===================w")
         serializer = UserLoginSerializer(data=request.data)
