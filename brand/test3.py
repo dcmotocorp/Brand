@@ -1,8 +1,9 @@
 import git
-
+import os
+os.path.abspath(os.getcwd())
 # Set the path to the local repository
-repo_path = '/path/to/repository'
-repo = git.Repo(repo_path)
+repo_path = '/'
+repo = git.Repo(os.path.abspath(os.getcwd()))
 origin = repo.remotes.origin
 origin.fetch()
 repo.git.checkout('master')
