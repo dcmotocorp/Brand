@@ -77,11 +77,6 @@ class PasswordResetAPIView(APIView):
 
 
 def send_email_view(subject,message,from_email,recipient_list):
-    subject = 'Hello from BigBazz!'
-    message = 'This is a test email sent using Django.'
-    from_email = 'your_email@gmail.com'  # Replace this with your email address
-    recipient_list = ['recipient@example.com']  # Replace this with the recipient's email address
-
     send_mail(subject, message, from_email, recipient_list)
 
 @api_view(['POST'])
@@ -95,7 +90,7 @@ def reset_username(request):
     from_mail  = settings.EMAIL_HOST_USER
     to_mail  = [user_data.email]
     try:
-        send_email_view(subject,message,from_mail,to_mail)
+        send_mail(subject,message,from_mail,to_mail)
     except Exception as ex:
-        print("failed to send mail")
+        print("failed to send mail",ex)
     return Response({'success':"Email send for reset username"},status=status.HTTP_200_OK) 
