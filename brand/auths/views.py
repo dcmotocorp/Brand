@@ -11,6 +11,12 @@ from django.urls import reverse_lazy
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
+from rest_framework.decorators import api_view
 
 class UserRegistrationView(APIView):
     def post(self, request):
@@ -68,3 +74,28 @@ class PasswordResetAPIView(APIView):
             )
         view = CustomPasswordResetView.as_view()
         return view(request._request).render()
+
+
+def send_email_view(subject,message,from_email,recipient_list):
+    subject = 'Hello from BigBazz!'
+    message = 'This is a test email sent using Django.'
+    from_email = 'your_email@gmail.com'  # Replace this with your email address
+    recipient_list = ['recipient@example.com']  # Replace this with the recipient's email address
+
+    send_mail(subject, message, from_email, recipient_list)
+
+@api_view(['POST'])
+def reset_username(request):
+    email = request.POST.get('email')
+    user_data = User.objects.filter(email=email).first()
+    if not user_data:
+        return Response({'Error':'This Email is Not Register'},status=status.HTTP_400_BAD_REQUEST)
+    subject = "Your Username"
+    message = f"your username for your account is : {user_data.username}"
+    from_mail  = settings.EMAIL_HOST_USER
+    to_mail  = [user_data.email]
+    try:
+        send_email_view(subject,message,from_mail,to_mail)
+    except Exception as ex:
+        print("failed to send mail")
+    return Response({'success':"Email send for reset username"},status=status.HTTP_200_OK) 
